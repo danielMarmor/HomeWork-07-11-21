@@ -1,0 +1,36 @@
+#1
+def is_dict_all_alpha(dictionary: dict):
+    is_all_alpha = all([key.isalpha() for key in dictionary.keys()])
+    return is_all_alpha
+
+#2
+def pop_by_value(dictionary: dict, value):
+    value_items = [(k, v) for k, v in dictionary.items() if v == value]
+    for key_value in list(value_items):
+        dictionary.pop(key_value[0])
+
+def pop_list_by_value(dictionary: dict, value):
+    value_items = [(k, v) for k, v in dictionary.items() if v == value]
+    poped_items = [dictionary.pop(item[0]) for item in value_items]
+    return poped_items
+
+#3
+def merge_to_dict(lst1 : list, lst2 : list):
+    if len(lst1) != len(lst2):
+        return None
+    is_key_duplication = len(set(lst1)) < len(lst1)
+    if is_key_duplication:
+        return None
+    dictionary = {}
+    for i in range(0, len(lst1)):
+        dictionary[lst1[i]] = lst2[i]
+    return dictionary
+
+names = {'Daniel': 1, 'Stav': 2, 'Itay': 1}
+print(is_dict_all_alpha(names))
+
+poped_items = pop_list_by_value(names, 1)
+print(poped_items)
+
+diction = merge_to_dict([1, 2, 3] , [4, 5, 6])
+print(diction)
